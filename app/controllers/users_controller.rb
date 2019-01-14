@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UsersController < ProtectedController
+class UsersController < OpenReadController
   skip_before_action :authenticate, only: %i[signup signin]
 
   # POST '/sign-up'
@@ -46,7 +46,39 @@ class UsersController < ProtectedController
     end
   end
 
+    # GET /users
+  def index
+    @users = User.all
+
+    render json: @users
+  end
+
+   # GET /users/1
+  def show
+    @user = User.find(params[:id])
+
+    render json: @user
+  end
+
+  # PATCH/PUT /users/1
+  def update
+    if current_user.update(user_params)
+      render json: current_user
+    else
+      render json: current_user.errors, status: :unprocessable_entity
+    end
+  end
+
+ # # DELETE /users/1
+ def destroy
+  current_user.destroy
+  end
+
   private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :tastings)
+  end
 
   def user_creds
     params.require(:credentials)
