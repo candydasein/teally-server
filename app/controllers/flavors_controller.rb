@@ -46,6 +46,6 @@ class FlavorsController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def flavor_params
-      params.require(:flavor).permit(:name, :first_parent, :second_parent)
+      params.require(:flavor).permit(:name, :first_parent, :second_parent, :likes)
     end
 end
