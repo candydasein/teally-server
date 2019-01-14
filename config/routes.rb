@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :flavor_likes
   resources :tastings
   resources :teas, except: %i[new edit]
   resources :flavors, except: %i[new edit]
