@@ -1,4 +1,5 @@
 #!/bin/bash
+#EMAIL=hi PASSWORD=hi PASSWORD=hi sh curl-scripts/auth/sign-up.sh
 
 curl "http://localhost:4741/sign-up" \
   --include \
