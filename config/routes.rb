@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :tastings
   resources :teas, except: %i[new edit]
   resources :flavors, except: %i[new edit]
+  resources :users, only: %i[update show index destroy]
   # RESTful routes
   resources :examples, except: %i[new edit]
 
