@@ -1,3 +1,3 @@
 class TeaSerializer < ActiveModel::Serializer
-  attributes :id, :name, :family, :info, :country, :picture
+  attributes :id, :name, :family, :info, :country, :picture, :flavor_likes
 end
