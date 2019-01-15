@@ -18,6 +18,15 @@ class TastingsController < ApplicationController
     @tasting = Tasting.new(tasting_params)
 
     if @tasting.save
+      
+      @flavors = params[:tasting][:flavors]
+
+      puts "\n\n#{@flavors}\n\n"
+
+      @flavors.each do |flavor_id| 
+        @tasting.flavors << Flavor.find(flavor_id)
+      end
+
       render json: @tasting, status: :created, location: @tasting
     else
       render json: @tasting.errors, status: :unprocessable_entity
@@ -46,6 +55,6 @@ class TastingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tasting_params
-      params.require(:tasting).permit(:user_id, :tea_id)
+      params.require(:tasting).permit(:user_id, :tea_id, :flavors)
     end
 end
