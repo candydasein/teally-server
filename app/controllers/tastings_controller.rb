@@ -35,7 +35,17 @@ class TastingsController < ApplicationController
 
   # PATCH/PUT /tastings/1
   def update
+   
     if @tasting.update(tasting_params)
+      
+      @flavors = params[:tasting][:flavors]
+
+      puts "@flavors is \n\n#{@flavors}\n\n"
+
+      @flavors.each do |flavor_id| 
+        @tasting.flavors << Flavor.find(flavor_id)
+      end
+      
       render json: @tasting
     else
       render json: @tasting.errors, status: :unprocessable_entity
