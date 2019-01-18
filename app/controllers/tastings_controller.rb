@@ -42,6 +42,8 @@ class TastingsController < ApplicationController
 
       puts "@flavors is \n\n#{@flavors}\n\n"
 
+      @tasting.flavors = []
+      
       @flavors.each do |flavor_id| 
         @tasting.flavors << Flavor.find(flavor_id)
       end
