@@ -58,6 +58,16 @@ I also plan to enhance the overall stylistics of the site. Currently, it is diso
 
 ![Link](https://i.imgur.com/385Rvpv.png)
 
+## Dependencies
+
+Install with `bundle install`.
+
+-   [`rails-api`](https://github.com/rails-api/rails-api)
+-   [`rails`](https://github.com/rails/rails)
+-   [`active_model_serializers`](https://github.com/rails-api/active_model_serializers)
+-   [`ruby`](https://www.ruby-lang.org/en/)
+-   [`postgres`](http://www.postgresql.org)
+
 ## API
 
 ### Authentication
@@ -99,7 +109,6 @@ I also plan to enhance the overall stylistics of the site. Currently, it is diso
 | GET    | `/tastings/1`          | `tastings#show`      |
 | PATCH  | `/tastings/1`          | `tastings#patch`  |
 | DELETE | `/sign-out`            | `tastings#delete`   |
-
 
 ## Screenshot
 
