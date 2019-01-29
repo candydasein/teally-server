@@ -4,7 +4,7 @@ class TeasController < ApplicationController
   # GET /teas
   def index
     @teas = Tea.all
-
+    
     render json: @teas
   end
 
