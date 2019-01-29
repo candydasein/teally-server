@@ -6,29 +6,17 @@ class User < ApplicationRecord
   has_many :tastings
   has_many :flavors, through: :tastings
 
-  # def favorite_flavors
-  #   #:user[:flavors].each_with_object(Hash.new(0)) { |m,h| h[m] +=1 }.sort_by{ |k,v| v }
-
-  #   # const userFlavors = this.props.user.flavors.map(flavor => flavor.name)
-  #   # const userFlavorFrequency = {}
-
-  #   # for (let i = 0; i < userFlavors.length; i++) {
-  #   #   const num = userFlavors[i]
-  #   #   userFlavorFrequency[num] = userFlavorFrequency[num] ? userFlavorFrequency[num] + 1 : 1
-  #   # }
-
-  #   # const userSortableFlavors = []
-  #   # for (const flavor in userFlavorFrequency) {
-  #   #   userSortableFlavors.push([flavor, userFlavorFrequency[flavor]])
-  #   # }
-
-  #   # const userSortedFavoriteFlavors = userSortableFlavors.sort((a, b) => b[1] - a[1]).slice(0, 5)
+  def favorite_flavors
     
-  #   # const userTop5 = userSortedFavoriteFlavors.flat()
-  #   #   .filter(item => typeof item === 'string')
-  #   #   .join(', ') 
-  #   # console.log(userTop5) 
-  # end
-
-  # puts favorite_flavors
+    flavor_names = flavors.map { |flavor| flavor.name }
+    # puts flavor_names
+    #Tea[:flavors].frequency.sort_by(&:last).reverse.flatten.keep_if { | item | item.is_a? String }
+    #pull out just the names first to iterate over them
+    flavor_names.each_with_object(Hash.new(0)) do |tea_flavor, tea_flavors_with_count| 
+      tea_flavors_with_count[tea_flavor] += 1
+    end 
+     .sort_by{ |k, v| v }.reverse.flatten
+     .keep_if { | item | item.is_a? String }
+  
+  end 
 end

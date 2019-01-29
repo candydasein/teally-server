@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UserLoginSerializer < ActiveModel::Serializer
-  attributes :id, :email, :token, :tastings
+  attributes :id, :email, :token, :tastings, :favorite_flavors
   has_many :flavors
 
   def token
